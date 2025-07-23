@@ -12,12 +12,12 @@ import 'presentation/bloc/bloc_provider.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-class GrandWayApp extends StatefulWidget {
+class PasaApp extends StatefulWidget {
   @override
-  _GrandWayAppState createState() => _GrandWayAppState();
+  _PasaAppState createState() => _PasaAppState();
 }
 
-class _GrandWayAppState extends State<GrandWayApp> {
+class _PasaAppState extends State<PasaApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppBloc>(bloc: AppBloc(), child: App());

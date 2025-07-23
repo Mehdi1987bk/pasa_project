@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'data/network/api/auth_api.dart';
  import 'data/repositories/data_auth_repository.dart';
 import 'domain/repositories/auth_repository.dart';
-import 'kango_app.dart';
+import 'pasa_app.dart';
 
 
 final GetIt sl = GetIt.instance;
@@ -22,7 +22,7 @@ void main() async {
 
   _registerDependency();
 
-  runApp(GrandWayApp());
+  runApp(PasaApp());
 }
 
 void _registerDependency() {
