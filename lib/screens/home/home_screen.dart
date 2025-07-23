@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasa_project/presentation/bloc/base_screen.dart';
 import 'package:pasa_project/screens/home/home_bloc.dart';
 import 'package:pasa_project/screens/home/widget/%D1%81ategory_item.dart';
- import 'package:pasa_project/screens/home/widget/category_list.dart';
+import 'package:pasa_project/screens/home/widget/category_list.dart';
 import 'package:pasa_project/screens/home/widget/choose_category_button.dart';
 import 'package:pasa_project/screens/home/widget/selected_categories_widget.dart';
 import '../../../data/network/response/getImages_by_ids_resposne.dart';
@@ -77,8 +77,6 @@ class _HomeScreenState extends BaseState<HomeScreen, HomeBloc> {
         padding: const EdgeInsets.all(20),
         children: [
           CategoryButton(onTap: () => _openCategoryDialog(context)),
-
-          if (bloc.selectedCategoryIds.isNotEmpty)
             SelectedCategoriesWidget(
               selectedCategoryIds: bloc.selectedCategoryIds,
               onDelete: (id) {
@@ -98,8 +96,12 @@ class _HomeScreenState extends BaseState<HomeScreen, HomeBloc> {
                   bloc.fetchIdsForSelectedCategories();
                 });
               },
+              onAdd: (int id) {
+                setState(() {
+                  bloc.selectedCategoryIds.add(id);
+                });
+              },
             ),
-
           if (bloc.getIdByCatsFuture != null)
             FutureBuilder<List<int>>(
               future: bloc.getIdByCatsFuture,
@@ -138,7 +140,6 @@ class _HomeScreenState extends BaseState<HomeScreen, HomeBloc> {
                           );
                         },
                       ),
-
                       if (hasMore)
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),

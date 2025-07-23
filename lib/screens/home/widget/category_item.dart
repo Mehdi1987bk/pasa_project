@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -108,6 +110,14 @@ final String jsonData = '''
   ]
 }
 ''';
+
+final Map<String, dynamic> categoryMap = jsonDecode(jsonData);
+
+
+final List<Map<String, dynamic>> allCategories = categoryMap.values
+    .expand((list) => List<Map<String, dynamic>>.from(list))
+    .toList();
+
 class CategoryTile extends StatelessWidget {
   final int id;
   final bool selected;
